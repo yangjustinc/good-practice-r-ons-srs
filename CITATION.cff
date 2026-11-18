@@ -15,10 +15,10 @@ authors:
     affiliation: "Division of Psychiatry, University College London"
     orcid: "https://orcid.org/0000-0003-2881-4906"
 version: "1.0.0"
-date-released: "2026-11-25"
-license:
-  - CC-BY-4.0
-  - MIT
+date-released: "2026-11-18"
+# Lesson content is CC BY 4.0 (the licence of the archived record);
+# the R code in code/ is MIT. See LICENSE.md.
+license: CC-BY-4.0
 url: "https://dataciseopenlearning.org/courses/good-practice-for-r-users-when-working-in-the-ons-srs/"
 repository-code: "https://github.com/yangjustinc/good-practice-r-ons-srs"
 keywords:
