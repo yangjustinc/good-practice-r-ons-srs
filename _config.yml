@@ -33,8 +33,6 @@ defaults:
     values: { title: "Home", nav_order: 1, permalink: "/" }
   - scope: { path: "LESSON.md" }
     values: { title: "Lesson notes", nav_order: 2 }
-  - scope: { path: "LICENSE.md" }
-    values: { title: "Licence", nav_order: 3 }
 
 kramdown:
   input: GFM
@@ -42,7 +40,9 @@ kramdown:
   hard_wrap: false
 
 exclude:
+  - code/
   - data/
+  - LICENSE.md
   - derived/
   - "*.Rproj"
   - CITATION.cff

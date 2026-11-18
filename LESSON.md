@@ -36,7 +36,7 @@ The session introduces and demonstrates these. Applying them to your own work is
 > **Research question:** how does trip activity vary across NYC pickup zones and over time?
 > **Source unit:** one row = one trip. **Analytical unit:** one row = pickup zone × day.
 
-The full code is in [`code/01_workflow_data_table.R`](code/01_workflow_data_table.R) (the same analysis in dplyr: [`code/02_workflow_dplyr.R`](code/02_workflow_dplyr.R)). Each section below names the matching step.
+The full code is in [`code/01_workflow_data_table.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/01_workflow_data_table.R) (the same analysis in dplyr: [`code/02_workflow_dplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/02_workflow_dplyr.R)). Each section below names the matching step.
 
 > **Pause and predict.** Questions marked ❓ were asked in the session. Try to answer each one before reading on: committing to a prediction is what makes the result stick.
 
@@ -83,7 +83,7 @@ Every join has an expected **cardinality**: one-to-one, one-to-many, many-to-one
 
 ## 3. Working with less data
 
-*Script steps 1 and 3; [`code/04_database_dbplyr.R`](code/04_database_dbplyr.R).*
+*Script steps 1 and 3; [`code/04_database_dbplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/04_database_dbplyr.R).*
 
 The only `data.table` grammar used in this lesson is
 
@@ -135,7 +135,7 @@ con <- dbConnect(odbc::odbc(), Driver = "SQL Server", Server = "<server>",
 events <- tbl(con, I("dbo.<table>"))
 ```
 
-To see the T-SQL your code will send to SQL Server without connecting to one, run section 2 of [`code/04_database_dbplyr.R`](code/04_database_dbplyr.R) (`simulate_mssql()`).
+To see the T-SQL your code will send to SQL Server without connecting to one, run section 2 of [`code/04_database_dbplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/04_database_dbplyr.R) (`simulate_mssql()`).
 
 > **Key point:** move and process only what the analysis requires, and push reductions to where the data live.
 
@@ -215,7 +215,7 @@ analysis_bad[, sum(n_trips)] - analysis[, sum(n_trips)]  # 61,440 trips that nev
 
 There is no error and no warning. ❓ *Would R know this was wrong?* No. Make your expectation executable:
 
-- **dplyr:** `left_join(x, y, by = ..., relationship = "many-to-one")` stops with an error if it is violated (see [`code/02_workflow_dplyr.R`](code/02_workflow_dplyr.R)).
+- **dplyr:** `left_join(x, y, by = ..., relationship = "many-to-one")` stops with an error if it is violated (see [`code/02_workflow_dplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/02_workflow_dplyr.R)).
 - **data.table / base R:** `stopifnot(nrow(after) == nrow(before))`, and check the total of a count column before and after.
 
 > **Key point:** successful execution is not evidence of a correct join.
@@ -427,6 +427,6 @@ You only need this if you want to run the code. You do **not** need SRS access.
 
 **Things to know:**
 
-- Your counts should match these notes exactly if the TLC hasn't republished the files. Compare the checksums in [`data/MANIFEST.csv`](data/MANIFEST.csv) with `tools::md5sum()`. Timings will differ on your machine.
+- Your counts should match these notes exactly if the TLC hasn't republished the files. Compare the checksums in [`data/MANIFEST.csv`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/data/MANIFEST.csv) with `tools::md5sum()`. Timings will differ on your machine.
 - Timestamps are New York local time, stored without a time zone. After the CSV step R labels them "UTC"; the clock times and dates are correct, so don't convert them.
 - **Before using any of this in the SRS**, check which packages are available in your environment, and follow your project's output-checking rules. Nothing here needs to leave or enter the SRS: the techniques transfer, not the data.

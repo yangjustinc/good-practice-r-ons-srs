@@ -23,13 +23,13 @@ SRS data can't leave the SRS, so the examples use public data with the same stru
 
 | Script | What it does |
 |---|---|
-| [`00_download_and_prepare.R`](code/00_download_and_prepare.R) | Downloads the data; writes a seven-column January CSV and a small fallback sample |
-| [`01_workflow_data_table.R`](code/01_workflow_data_table.R) | The complete worked example, with executable checks |
-| [`02_workflow_dplyr.R`](code/02_workflow_dplyr.R) | The same workflow in dplyr |
-| [`03_full_year_arrow.R`](code/03_full_year_arrow.R) | The whole year with Arrow, without loading it into R |
-| [`04_database_dbplyr.R`](code/04_database_dbplyr.R) | Letting a database do the work with DBI + dbplyr (DuckDB here; SQL Server in the SRS) |
+| [`00_download_and_prepare.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/00_download_and_prepare.R) | Downloads the data; writes a seven-column January CSV and a small fallback sample |
+| [`01_workflow_data_table.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/01_workflow_data_table.R) | The complete worked example, with executable checks |
+| [`02_workflow_dplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/02_workflow_dplyr.R) | The same workflow in dplyr |
+| [`03_full_year_arrow.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/03_full_year_arrow.R) | The whole year with Arrow, without loading it into R |
+| [`04_database_dbplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/04_database_dbplyr.R) | Letting a database do the work with DBI + dbplyr (DuckDB here; SQL Server in the SRS) |
 
-To run the code, open `teaching.Rproj` and follow [Setting up in LESSON.md](LESSON.md#setting-up). No data are included in this repository; [`data/MANIFEST.csv`](data/MANIFEST.csv) records checksums of the files the materials were developed with.
+To run the code, open `teaching.Rproj` and follow [Setting up in LESSON.md](LESSON.md#setting-up). No data are included in this repository; [`data/MANIFEST.csv`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/data/MANIFEST.csv) records checksums of the files the materials were developed with.
 
 ## Data source
 
@@ -37,6 +37,6 @@ NYC Taxi & Limousine Commission, [TLC Trip Record Data](https://www.nyc.gov/site
 
 ## Citation and licence
 
-Please cite these materials if you use or adapt them: see [CITATION.cff](CITATION.cff), or "Cite this repository" on GitHub. Lesson text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); code is [MIT](https://opensource.org/license/mit). See [LICENSE.md](LICENSE.md).
+Please cite these materials if you use or adapt them: see [CITATION.cff](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/CITATION.cff), or "Cite this repository" on GitHub. Lesson text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); code is [MIT](https://opensource.org/license/mit). See [LICENSE.md](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/LICENSE.md).
 
 The advice draws on population-level linked education and health research in the ONS SRS. The views expressed are the author's own.
