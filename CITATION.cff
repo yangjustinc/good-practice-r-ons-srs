@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use or adapt these materials, please cite them as below."
+type: software
+title: "Good Practice for R Users When Working in the ONS SRS: workshop materials"
+abstract: >-
+  Materials for a one-hour workshop on efficient, reproducible and robust R
+  workflows for large linked administrative data in the ONS Secure Research
+  Service and comparable trusted research environments. Uses public NYC TLC
+  High Volume For-Hire Vehicle trip records (2024) as a worked example, with
+  data.table, dplyr, Arrow and DBI/dbplyr implementations and self-study
+  lesson notes.
+authors:
+  - family-names: Yang
+    given-names: Justin
+    affiliation: "Division of Psychiatry, University College London"
+    orcid: "https://orcid.org/0000-0003-2881-4906"
+version: "1.0.0"
+date-released: "2026-11-25"
+license:
+  - CC-BY-4.0
+  - MIT
+url: "https://dataciseopenlearning.org/courses/good-practice-for-r-users-when-working-in-the-ons-srs/"
+repository-code: "https://github.com/yangjustinc/good-practice-r-ons-srs"
+keywords:
+  - R
+  - data.table
+  - dbplyr
+  - arrow
+  - reproducible research
+  - administrative data
+  - trusted research environment
+  - ONS Secure Research Service
+  - teaching materials

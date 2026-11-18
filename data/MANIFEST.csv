@@ -1,0 +1,14 @@
+file,source_url,size_bytes,md5,file_date
+data/raw_parquet/fhvhv_tripdata_2024-01.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-01.parquet,472757547,b8491bce02aa02d624944214f00a3b88,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-02.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-02.parquet,462475428,9537aa744d0f48082e68a6a5eb252e73,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-03.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-03.parquet,507940560,84c7cc38cbb6619ee65c7375fb953916,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-04.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-04.parquet,476115643,e4221c971f88e19cac55de20f403d3b2,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-05.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-05.parquet,498575918,47b441bb87f61e150a1aab5d97fb4bcf,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-06.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-06.parquet,484417715,1c0409db6ffead21c00bb88fe83d934f,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-07.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-07.parquet,468437522,89d7a6c7287f00f23d588df098b66af6,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-08.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-08.parquet,465991646,b2455e05d7746c03cb79efebb182e97f,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-09.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-09.parquet,466470118,64a9f85aaffd7406f535328ac6e17a61,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-10.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-10.parquet,485102359,d8ba74e382a1ac08ee22f5674a0b096e,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-11.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-11.parquet,480228052,0e1bb754d7bd3063d577f3a91e822010,2026-09-04
+data/raw_parquet/fhvhv_tripdata_2024-12.parquet,https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-12.parquet,507534115,63cb71c9c32bc4ca0a42ab656352589d,2026-09-04
+data/lookup/taxi_zone_lookup.csv,https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv,12331,c6064b7c144c716450641f769659d178,2026-09-04

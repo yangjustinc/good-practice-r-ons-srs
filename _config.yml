@@ -1,0 +1,48 @@
+# GitHub Pages site (Jekyll + Just the Docs). Built automatically by GitHub
+# Pages from the main branch; README.md becomes the home page.
+
+title: Good Practice for R in the ONS SRS
+description: >-
+  Workshop materials on efficient, reproducible and robust R workflows for
+  large linked administrative data in the ONS Secure Research Service.
+url: https://yangjustinc.github.io
+baseurl: /good-practice-r-ons-srs
+
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+plugins:
+  - jekyll-remote-theme
+
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Back to top"
+
+aux_links:
+  "View on GitHub": https://github.com/yangjustinc/good-practice-r-ons-srs
+  "Course page": https://dataciseopenlearning.org/courses/good-practice-for-r-users-when-working-in-the-ons-srs/
+aux_links_new_tab: true
+
+footer_content: >-
+  Lesson text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>;
+  code MIT. Please <a href="https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/CITATION.cff">cite</a>
+  if you use or adapt these materials. Data: NYC Taxi &amp; Limousine Commission.
+
+defaults:
+  - scope: { path: "README.md" }
+    values: { title: "Home", nav_order: 1, permalink: "/" }
+  - scope: { path: "LESSON.md" }
+    values: { title: "Lesson notes", nav_order: 2 }
+  - scope: { path: "LICENSE.md" }
+    values: { title: "Licence", nav_order: 3 }
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+
+exclude:
+  - data/
+  - derived/
+  - "*.Rproj"
+  - CITATION.cff
