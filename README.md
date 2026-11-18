@@ -1,5 +1,7 @@
 # Good Practice for R Users When Working in the ONS SRS
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24343725.svg)](https://doi.org/10.5281/zenodo.24343725)
+
 Materials for a one-hour workshop on writing efficient, reproducible and robust R code for large linked administrative data in the [ONS Secure Research Service](https://www.ons.gov.uk/aboutus/whatwedo/statistics/requestingstatistics/secureresearchservice) (SRS) and similar trusted research environments. First delivered through [Datacise Open Learning](https://dataciseopenlearning.org/courses/good-practice-for-r-users-when-working-in-the-ons-srs/) on 25 November 2026.
 
 ## Start here
@@ -37,6 +39,10 @@ NYC Taxi & Limousine Commission, [TLC Trip Record Data](https://www.nyc.gov/site
 
 ## Citation and licence
 
-Please cite these materials if you use or adapt them: see [CITATION.cff](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/CITATION.cff), or "Cite this repository" on GitHub. Lesson text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); code is [MIT](https://opensource.org/license/mit). See [LICENSE.md](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/LICENSE.md).
+Please cite these materials if you use or adapt them:
+
+> Yang, J. (2026). *Good Practice for R Users When Working in the ONS SRS: workshop materials*. Zenodo. <https://doi.org/10.5281/zenodo.24343725>
+
+For other formats, see [CITATION.cff](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/CITATION.cff), or "Cite this repository" on GitHub. Lesson text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); code is [MIT](https://opensource.org/license/mit). See [LICENSE.md](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/LICENSE.md).
 
 The advice draws on population-level linked education and health research in the ONS SRS. The views expressed are the author's own.
