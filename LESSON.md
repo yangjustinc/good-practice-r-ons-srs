@@ -423,7 +423,7 @@ You only need this if you want to run the code. You do **not** need SRS access.
    ```
    For a smaller download (January only, ~0.5 GB), run `Sys.setenv(HVFHV_N_MONTHS = "1")` first. Everything still works; the "whole year" scripts just use January.
 4. **Memory.** The January examples need ~3 GB of free RAM. With less, read `data/fallback/fhvhv_2024-01_sample_250k.csv` instead; your counts will differ from these notes.
-5. **Run the scripts in order:** `01_workflow_data_table.R` (or `02_workflow_dplyr.R`), then `03_full_year_arrow.R` and `04_database_dbplyr.R`. On a recent laptop they take roughly 5 s, 1 min, 20 s and 5 s respectively. The dplyr version is slower because parsing datetimes from CSV is slow, which is itself a lesson.
+5. **Run the scripts in order:** `01_workflow_data_table.R` (or `02_workflow_dplyr.R`), then `03_full_year_arrow.R` and `04_database_dbplyr.R`. On a recent laptop they take roughly 5 s, 1 min, 20–40 s and 5 s respectively (the first run of a script is slower while files are read from disk). The dplyr version is slower because parsing datetimes from CSV is slow, which is itself a lesson.
 
 **Things to know:**
 

@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24343725.svg)](https://doi.org/10.5281/zenodo.24343725)
 
-Materials for a one-hour workshop on writing efficient, reproducible and robust R code for large linked administrative data in the [ONS Secure Research Service](https://www.ons.gov.uk/aboutus/whatwedo/statistics/requestingstatistics/secureresearchservice) (SRS) and similar trusted research environments. First delivered through [Datacise Open Learning](https://dataciseopenlearning.org/courses/good-practice-for-r-users-when-working-in-the-ons-srs/) on 25 November 2026.
+Materials for a one-hour workshop on writing efficient, reproducible and robust R code for large linked administrative data in the [ONS Secure Research Service](https://www.ons.gov.uk/aboutus/whatwedo/statistics/requestingstatistics/secureresearchservice) (SRS) and similar trusted research environments. First delivered through [Datacise Open Learning](https://dataciseopenlearning.org/courses/good-practice-for-r-users-when-working-in-the-ons-srs/) on 25 November 2026 (live on Microsoft Teams). A recording will be linked here once Datacise shares it.
 
 ## Start here
 
