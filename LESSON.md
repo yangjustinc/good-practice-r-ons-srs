@@ -162,7 +162,7 @@ tbl(con, "episodes") |> filter(year >= 2015) |> count(person_id) |> collect()
 
 ```r
 daily_zone <- trips[, .(n_trips = .N, mean_base_fare = mean(base_passenger_fare)),
-                    by = .(PULocationID, pickup_date)]
+                    by = .(PULocationID, pickup_date = as.IDate(pickup_datetime))]
 ```
 
 19,663,930 rows (~0.9 GB) become 8,006 rows (~0.2 MB). Save that intermediate, and the event-level table no longer needs to exist:
