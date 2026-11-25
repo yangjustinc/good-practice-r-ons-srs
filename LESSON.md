@@ -313,7 +313,23 @@ Comments should record **decisions and reasons**, not narrate syntax:
 # and the trip table will not fit in memory alongside the linked data.
 ```
 
-Turn repeated decisions into named functions, so the decision lives in one place:
+Turn repeated checks into a function, so you write them once and every join gets the same treatment. This is the check from §5, made reusable:
+
+```r
+check_join <- function(before, after, count_col) {
+  stopifnot(nrow(after) == nrow(before),
+            sum(after[[count_col]]) == sum(before[[count_col]]))
+  invisible(after)
+}
+
+check_join(daily_zone, analysis,     "n_trips")   # passes silently
+check_join(daily_zone, analysis_bad, "n_trips")   # stops:
+# Error in check_join(...) : nrow(after) == nrow(before) is not TRUE
+```
+
+The script now stops at the problem, instead of carrying on with 61,440 trips that never happened. Small functions that each do one job and get reused are what "modular code" means in practice.
+
+The same goes for repeated decisions, so each decision lives in one place:
 
 ```r
 read_trips <- function(path) {
