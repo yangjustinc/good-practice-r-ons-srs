@@ -8,14 +8,14 @@ These notes follow the live session section by section, so you can revisit it or
 
 By the end of the session (or of these notes) you should be able to:
 
-1. **identify** what one row of a dataset represents, and state the analytical unit your research question needs (§1–2);
-2. **explain** why reducing rows, columns and granularity early, ideally inside the database, lowers memory use and run time, and **recognise** code that pulls a whole table into R (§3);
-3. **decide** which steps of a workflow to compute once and save, and which to rerun (§4);
-4. **state** the relationship you expect from a join, and **name** the checks that would detect a violation (§2, §5);
-5. **distinguish** a missing record from a true zero, and **list** what you would need to know before recoding `NA` to `0` (§6);
-6. **identify** assumptions in your own workflow that could be made explicit as comments, functions or checks (§7–8).
+1. work out what one row is, and what your question actually needs (§1–2);
+2. cut data down early, ideally in the database, and spot code that doesn't (§3);
+3. decide what to save once and what to rerun (§4);
+4. check that a join did what you expected (§2, §5);
+5. tell a missing record from a real zero (§6);
+6. write your assumptions into your code (§7–8).
 
-The session introduces and demonstrates these. Applying them to your own work is the next step, and [the self-check](#check-your-understanding) and §8 are there to help.
+In the session, each of these is practised on an SRS-style example. Those questions are included below, marked **❓ SRS question**. The [self-check](#check-your-understanding) at the end is optional extra practice.
 
 **Contents**
 
@@ -60,7 +60,11 @@ One row is one trip. That is one month; the year has ~240 million.
 
 **In the SRS:** admissions, attendances, exclusions and benefit spells arrive as events, while analyses usually need person-years, school-years or area-months.
 
-> **Key point:** the structure in which data arrive is not necessarily the structure in which they should be analysed.
+❓ **SRS question.** *You've got A&E data with one row per visit. Your question: how many children went to A&E at least once each year? What should one row be?*
+
+One row per child per year, with a yes/no for whether they went. If you kept one row per visit and counted rows, a child with five visits would be counted five times.
+
+> **Key point:** the shape the data come in isn't necessarily the shape you want to analyse.
 
 ## 2. Units, identifiers and join relationships
 
@@ -79,7 +83,7 @@ zones[, .N, by = Zone][N > 1]         # 2 rows: zone NAMES repeat
 
 Every join has an expected **cardinality**: one-to-one, one-to-many, many-to-one or many-to-many. Trips → zones is **many-to-one**. Decide which you expect *before* joining, because it tells you what to check afterwards.
 
-> **Key point:** an identifier can identify an entity without identifying a row, and a label that looks like an identifier may be neither.
+> **Key point:** just because a column looks like an ID doesn't mean it's a key.
 
 ## 3. Working with less data
 
@@ -137,7 +141,18 @@ events <- tbl(con, I("dbo.<table>"))
 
 To see the T-SQL your code will send to SQL Server without connecting to one, run section 2 of [`code/04_database_dbplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/04_database_dbplyr.R) (`simulate_mssql()`).
 
-> **Key point:** move and process only what the analysis requires, and push reductions to where the data live.
+❓ **SRS question.** *Which one drags the whole table into R first?*
+
+```r
+# A
+tbl(con, "episodes") |> collect() |> filter(year >= 2015) |> count(person_id)
+# B
+tbl(con, "episodes") |> filter(year >= 2015) |> count(person_id) |> collect()
+```
+
+**A.** `collect()` comes before `filter()`, so every row comes into R and is filtered there. In B the database does the filtering and counting, and only one row per person comes back. If you see `collect()` early in a pipeline, treat it as a warning sign.
+
+> **Key point:** only move the data you need, and do the cutting down where the data live.
 
 ## 4. Managing computational cost
 
@@ -161,6 +176,10 @@ rm(trips)
 - **Cheap and changing steps** (models, tables, plots): rerun freely.
 
 Calling `gc()` is not the optimisation; designing the workflow so that the huge object stops being needed is.
+
+❓ **SRS question.** *Save it once, or rerun it? (a) pulling ten years of hospital episodes; (b) fitting your regression; (c) formatting your output table.*
+
+(a) Save: slow and stable. (b) and (c) Rerun: quick, and you'll keep changing them.
 
 ### What the benchmarks showed
 
@@ -218,7 +237,7 @@ There is no error and no warning. ❓ *Would R know this was wrong?* No. Make yo
 - **dplyr:** `left_join(x, y, by = ..., relationship = "many-to-one")` stops with an error if it is violated (see [`code/02_workflow_dplyr.R`](https://github.com/yangjustinc/good-practice-r-ons-srs/blob/main/code/02_workflow_dplyr.R)).
 - **data.table / base R:** `stopifnot(nrow(after) == nrow(before))`, and check the total of a count column before and after.
 
-> **Key point:** successful execution is not evidence of a correct join.
+> **Key point:** code running without an error doesn't mean the join was right.
 
 ## 6. Missingness, structural zeroes and validation
 
@@ -253,7 +272,11 @@ analysis_complete[is.na(n_trips), .N, by = PULocationID]
 - Does the absence of a record mean the absence of an event?
 - Could linkage or processing upstream have dropped records?
 
-> **Key point:** `NA` is a computational state; its meaning comes from the data-generating and observation process.
+❓ **SRS question.** *A school has no exclusions recorded for one term. Is that zero exclusions? What would you check first?*
+
+Not necessarily. Check whether the school sent its return that term, whether it was open and in scope, and whether pupil records could have failed to link. Ask yourself how the data would look different if the school simply hadn't sent anything: often, they'd look exactly the same.
+
+> **Key point:** a missing value doesn't mean anything on its own. What it means depends on how the data were collected.
 
 ### Validation (more than there was time for live)
 
@@ -309,7 +332,7 @@ And make sure R never restores a saved workspace. In RStudio: *Tools → Global 
 
 ❓ *Which assumptions that began in your head are now visible or testable in the code?* The analytical unit, the time window, the columns kept, the aggregation rule, join keys and cardinality, the observation frame, and the QA expectations.
 
-> **Key point:** reproducibility is more than code that runs twice. The important assumptions are explicit and, where possible, executable.
+> **Key point:** reproducible doesn't just mean it runs twice. It means your assumptions are written down, and checked where you can.
 
 ## 8. Reflect on your own workflow
 
@@ -332,14 +355,14 @@ Source unit: a consultation. Analytical unit: local authority × school year (vi
 
 ```r
 # A
-tbl(con, "episodes") |> collect() |> filter(year >= 2015) |> count(person_id)
+tbl(con, "pupils") |> filter(year == 2019) |> select(pupil_id, fsm) |> collect()
 # B
-tbl(con, "episodes") |> filter(year >= 2015) |> count(person_id) |> collect()
+tbl(con, "pupils") |> collect() |> filter(year == 2019) |> select(pupil_id, fsm)
 ```
 
 <details markdown="1"><summary>Answer</summary>
 
-**B.** In A, `collect()` copies every row of the table into R before filtering. In B, the filter and count run in the database, and only one row per person comes back.
+**A.** The filter and column selection run in the database, and only 2019's two columns come back. B calls `collect()` first, so every row and column of the table is copied into R before anything is cut down.
 </details>
 
 **3.** Save once, or rerun each time? (a) linking ten years of school census to hospital records; (b) a sensitivity analysis with a different covariate set; (c) recoding ethnicity into five groups you are still deciding on.
@@ -376,13 +399,13 @@ Why the cut-off is 25, and whether it applies at a particular date, are both hid
 
 ### Seven questions for any step in a workflow
 
-1. **What does one row represent?** (in the source, and in every intermediate)
-2. **What should the analytical unit be?**
-3. **Can rows, columns or granularity be reduced earlier, ideally in the database?**
-4. **Is expensive computation being repeated** that could be done once and saved?
-5. **What join relationship do I expect, and is it checked?**
-6. **What does absence of a record mean?** A true zero, not observed, or lost upstream?
-7. **What check would reveal that this step failed?**
+1. **What's one row?** In the source, and in every table you make.
+2. **What should one row be, for my question?**
+3. **Could I cut rows, columns or detail earlier, or in the database?**
+4. **Am I repeating slow work** that I could do once and save?
+5. **What should this join do, and am I checking it?**
+6. **What does a missing record mean here?** A real zero, not observed, or lost along the way?
+7. **How would I know if this step went wrong?**
 
 ### Patterns side by side
 
